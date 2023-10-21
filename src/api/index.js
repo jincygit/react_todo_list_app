@@ -62,9 +62,9 @@ export const addApiUrl = (newTodo) => {
 
 //delete todoitem using api
 export const deleteApiUrl = (itemId) => {
-  return customFetch(API_URLS.defaultTodo(), {
+  return customFetch(API_URLS.editTodoApi(itemId), {
     method: 'DELETE',
-    body: itemId,
+    //body: itemId,
     headers: {
       'Content-type': 'application/json; charset=UTF-8',
     }
@@ -72,10 +72,10 @@ export const deleteApiUrl = (itemId) => {
 };
 
 //edit todoitem using api
-export const editApiUrl = (id) => {
+export const editApiUrl = (id,editedTodo) => {
   return customFetch(API_URLS.editTodoApi(id), {
     method: 'PUT',
-    //body: newTodo,
+    body: JSON.stringify(editedTodo),
     headers: {
       'Content-type': 'application/json; charset=UTF-8',
     }

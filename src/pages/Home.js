@@ -16,12 +16,15 @@ const Home = () => {
   const [titleInputValue, setTitleInputValue] = useState(''); 
   //Holds the value of the completed status select input field
   const [completedStatusValue, setCompletedStatusValue] = useState(false);
-  //add list loadibg
+  //add button loading
   const [addingTodo, setAddingTodo] = useState(false);
-  //delete list loading
+  //delete button loading
   const [deletingTodo, setDeletingTodo] = useState(false);
-  //page loader
+  //updating button loading
+  const [updatingTodo, setUpdatingTodo] = useState(false);
+  //page loader values
   const [loadingStatus, setLoadingStatus] = useState(true);
+  //console.log("todos...", todos);
   
   
   
@@ -36,7 +39,6 @@ const Home = () => {
         setTodos(response.data);
       }
       setLoadingStatus(false);
-      //console.log("home api response",response);     
     } catch (error) {
       //error toast msg
       setLoadingStatus(false);     
@@ -95,19 +97,25 @@ const Home = () => {
   // Edit a todo item
   const handleEditTodo = async (todoListId,newTitle,completedStatus) => {    
     try {
+      const editedTodo = {
+        title: newTitle,
+        completed: completedStatus
+      };
       //edit api call
-      const response = await editApiUrl(todoListId);
-      //updation only when api call successful
+      const response = await editApiUrl(todoListId,editedTodo);
+      //updation only when api call successfull
       if (response.success) {
           //update values
-          todos.map(t => {
-            if (t.id === todoListId) {
-              t.title=newTitle;
-              t.completed=completedStatus;
-            } 
+          const updatedTodos = todos.map((todo) => {
+            if (todo.id === todoListId) {
+              return { ...todo, title: newTitle, completed: completedStatus };
+            }
+            return todo;
           });
-          setTodos(todos);
-      }
+          setTodos(updatedTodos);
+          setUpdatingTodo(false);
+         
+       }
     } catch (error) {
       console.log('Error updating task:', error);
     }
@@ -145,7 +153,9 @@ const Home = () => {
             handleEditTodo = {handleEditTodo}  
             handleDeleteTodo = {handleDeleteTodo}   
             deletingTodo = {deletingTodo} 
-            setDeletingTodo = {setDeletingTodo}     
+            setDeletingTodo = {setDeletingTodo}  
+            updatingTodo = {updatingTodo} 
+            setUpdatingTodo = {setUpdatingTodo}     
           />
         ))}
         

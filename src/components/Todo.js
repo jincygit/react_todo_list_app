@@ -10,7 +10,9 @@ const Todo = ({ todo,
                 handleEditTodo,
                 handleDeleteTodo,
                 deletingTodo,
-                setDeletingTodo
+                setDeletingTodo,
+                updatingTodo,
+                setUpdatingTodo
               }) => {
   //console.log(todos);
   const [editStatus, setEditStatus] = useState(false);
@@ -21,9 +23,10 @@ const Todo = ({ todo,
   
   // function edit a task
   const handleTodoUpdate = (todoListId) => {
-    // setEditStatus(false);
+    setUpdatingTodo(true);
     handleEditTodo(todoId,todoTitle,completedStatus);
   };
+  
 
   return (
     <div>
@@ -78,16 +81,28 @@ const Todo = ({ todo,
                                 
                               />
                             </button>
-                        :   <button 
-                              className={styles.actionicon} 
-                              onClick={() => {setEditStatus(false);handleTodoUpdate(todo.id);}}>
-                              <img 
-                                className={styles.actioniconimage}
-                                src="https://www.pngall.com/wp-content/uploads/4/Update-Button-PNG-Free-Image.png"
-                                alt="update-pic" 
-                                
-                              />
-                            </button>
+                        :     updatingTodo
+                              ? <button 
+                                    className={styles.actionicon} 
+                                    onClick={() => {setEditStatus(false);handleTodoUpdate(todo.id);}}>
+                                    <img 
+                                      className={styles.actioniconimage}
+                                      src="https://previews.123rf.com/images/gguy/gguy1808/gguy180800007/106507629-update-in-progress-loading-bar.jpg"
+                                      alt="update-pic" 
+                                      
+                                    />
+                                  </button>
+                                : <button 
+                                    className={styles.actionicon} 
+                                    onClick={() => {setEditStatus(false);handleTodoUpdate(todo.id);}}>
+                                    <img 
+                                      className={styles.actioniconimage}
+                                      src="https://www.pngall.com/wp-content/uploads/4/Update-Button-PNG-Free-Image.png"
+                                      alt="update-pic" 
+                                      
+                                    />
+                                  </button>
+                          
                         } 
                   </td>
                   <td>
