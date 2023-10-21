@@ -61,7 +61,7 @@ Here is the Technology Stack of this Application. which I have used to Built thi
    http://localhost:3000/
 
 ### Hoisted url
-    https://cart-f87fb.web.app      
+    https://todolist-cb903.web.app/    
 
 ### Folder Structure
     |--.gitignore
