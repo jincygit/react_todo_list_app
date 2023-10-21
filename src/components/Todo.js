@@ -1,7 +1,6 @@
-// imports
+//---------------------------Todo Component---------------
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import { Toaster,toast } from 'react-hot-toast';
 import styles from '../styles/home.module.css';
 
 
@@ -23,13 +22,11 @@ const Todo = ({ todo,
   // function edit a task
   const handleTodoUpdate = (todoListId) => {
     // setEditStatus(false);
-    //console.log("..todoId....  ",todoId,".todoTitle......  ",  todoTitle, "  completedStatus ", completedStatus);
     handleEditTodo(todoId,todoTitle,completedStatus);
   };
 
   return (
     <div>
-        
       <div className={styles.postWrapper}>
         <div className={styles.postHeader}>
           <div className={styles.postAvatar}>
@@ -94,7 +91,7 @@ const Todo = ({ todo,
                         } 
                   </td>
                   <td>
-                      {/* Delete button */}
+                      {/* show delete button or deleting button  based on deletingTodo value */}
                       {!deletingTodo
                         ? <button 
                             className={styles.actionicon}
@@ -126,11 +123,11 @@ const Todo = ({ todo,
           
         </div>
       </div>
-      <Toaster />
     </div>
   );
 };
 
+// prop validation
 Todo.propTypes = {
   todo: PropTypes.object.isRequired,
 };

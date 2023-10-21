@@ -1,6 +1,7 @@
+//---------------------------Navbar Component---------------
 import { Link } from 'react-router-dom';
-
 import styles from '../styles/navbar.module.css';
+
 
 const Navbar = () => {
   return (

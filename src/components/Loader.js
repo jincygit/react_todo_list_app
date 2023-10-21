@@ -1,8 +1,4 @@
-// const Loader = () => {
-//   return <div className="app-spinner"></div>;
-// };
-
-// export default Loader;
+//---------------------------Loader Component---------------
 const Loader = () => {
   return <div className="app-spinner"></div>;
 };

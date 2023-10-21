@@ -55,9 +55,8 @@ Here is the Technology Stack of this Application. which I have used to Built thi
    npm start
    ```
 ### Components
-    Tool            --for showing tooltip
-    SelectPostition --for selecting tooltip position by selectdropdown, by default it gives 
-                        as  top position , without dropdown selection
+    Todo            --for showing todolist
+    CreateTodo      --for creating todo
 ### Access the Application:
    http://localhost:3000/
 
@@ -98,6 +97,7 @@ Here is the Technology Stack of this Application. which I have used to Built thi
             |-->navbar.module.css
         |__>utils
             |-->index.js
+            |-->constants.js
         
 
 

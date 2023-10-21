@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import { Toaster,toast } from 'react-hot-toast';
+//---------------------------CreateTodo Component---------------
 import styles from '../styles/home.module.css';
 
-const CreatePost = ({
+
+const CreateTodo = ({
                       titleInputValue, 
                       setTitleInputValue, 
                       completedStatusValue,
@@ -45,9 +45,8 @@ const CreatePost = ({
             </button>
           </div>
       </div>
-      <Toaster />
     </div>
   );
 };
 
-export default CreatePost;
+export default CreateTodo;

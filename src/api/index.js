@@ -43,8 +43,8 @@ const customFetch = async (url, { body, ...customConfig }) => {
 
 
 //get todolist using api
-export const getTodoList = (page = 1, limit = 3) => {
-  return customFetch(API_URLS.todoList(page, limit), {
+export const getTodoList = () => {
+  return customFetch(API_URLS.defaultTodo(), {
     method: 'GET',
   });
 };
@@ -72,10 +72,10 @@ export const deleteApiUrl = (itemId) => {
 };
 
 //edit todoitem using api
-export const editApiUrl = (newTodo) => {
-  return customFetch(API_URLS.defaultTodo(), {
+export const editApiUrl = (id) => {
+  return customFetch(API_URLS.editTodoApi(id), {
     method: 'PUT',
-    body: newTodo,
+    //body: newTodo,
     headers: {
       'Content-type': 'application/json; charset=UTF-8',
     }
